@@ -1,5 +1,5 @@
-import Header from "../components/header/Header";
-import Footer from "../components/footer/Footer";
+import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
 
 export default function HomePage() {
   return (
@@ -41,16 +41,18 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div class="container text-center my-5 ">
-        <div class="row justify-content-around">
-          <div class="col-md-4">
-            <div
-              class="card"
-              style={{ width: "37rem", height: "25rem" }}
-            >
+      <div class="container text-center my-5">
+        <div class="row justify-content-between">
+          <div class="col-md-4 mt-5">
+            <div class="card">
               <div class="row">
                 <div class="col-6">
-                  <img src="https://images.pexels.com/photos/1209611/pexels-photo-1209611.jpeg" height="398rem" class="card-img rounded-start" alt="..." />
+                  <img
+                    src="https://images.pexels.com/photos/1209611/pexels-photo-1209611.jpeg"
+                    height="250rem"
+                    class="card-img rounded-start"
+                    alt="..."
+                  />
                 </div>
                 <div class="col-6">
                   <div class="card-body">
@@ -60,41 +62,6 @@ export default function HomePage() {
                       natural lead-in to additional content. This content is a
                       little bit longer.
                     </p>
-                    
-                    <br />
-                    <br />
-                    <br />
-                    <p class="card-text">
-                      <small class="text-body-secondary">
-                        Last updated 3 mins ago
-                      </small>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div
-              class="card"
-              style={{ width: "37rem", height: "25rem" }}
-            >
-              <div class="row">
-                <div class="col-6">
-                  <img src="https://images.pexels.com/photos/1209611/pexels-photo-1209611.jpeg" height="398rem" class="card-img rounded-start" alt="..." />
-                </div>
-                <div class="col-6">
-                  <div class="card-body">
-                    <h5 class="card-title">New Arrival</h5>
-                    <p class="card-text">
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </p>
-                    
-                    <br />
-                    <br />
-                    <br />
                     <p class="card-text">
                       <small class="text-body-secondary">
                         Last updated 3 mins ago
@@ -106,13 +73,15 @@ export default function HomePage() {
             </div>
           </div>
           <div class="col-md-4 mt-5">
-            <div
-              class="card"
-              style={{ width: "37rem", height: "25rem" }}
-            >
+            <div class="card">
               <div class="row">
                 <div class="col-6">
-                  <img src="https://images.pexels.com/photos/1209611/pexels-photo-1209611.jpeg" height="398rem" class="card-img rounded-start" alt="..." />
+                  <img
+                    src="https://images.pexels.com/photos/1209611/pexels-photo-1209611.jpeg"
+                    height="250rem"
+                    class="card-img rounded-start"
+                    alt="..."
+                  />
                 </div>
                 <div class="col-6">
                   <div class="card-body">
@@ -122,10 +91,6 @@ export default function HomePage() {
                       natural lead-in to additional content. This content is a
                       little bit longer.
                     </p>
-                    
-                    <br />
-                    <br />
-                    <br />
                     <p class="card-text">
                       <small class="text-body-secondary">
                         Last updated 3 mins ago
@@ -137,12 +102,15 @@ export default function HomePage() {
             </div>
           </div>
           <div class="col-md-4 mt-5">
-            <div
-              class="card"
-            >
+            <div class="card">
               <div class="row">
                 <div class="col-6">
-                  <img src="https://images.pexels.com/photos/1209611/pexels-photo-1209611.jpeg" height="250rem" class="card-img rounded-start" alt="..." />
+                  <img
+                    src="https://images.pexels.com/photos/1209611/pexels-photo-1209611.jpeg"
+                    height="250rem"
+                    class="card-img rounded-start"
+                    alt="..."
+                  />
                 </div>
                 <div class="col-6">
                   <div class="card-body">
@@ -152,7 +120,38 @@ export default function HomePage() {
                       natural lead-in to additional content. This content is a
                       little bit longer.
                     </p>
-                    
+                    <p class="card-text">
+                      <small class="text-body-secondary">
+                        Last updated 3 mins ago
+                      </small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-md-4 mt-5">
+            <div class="card">
+              <div class="row">
+                <div class="col-6">
+                  <img
+                    src="https://images.pexels.com/photos/1209611/pexels-photo-1209611.jpeg"
+                    height="250rem"
+                    class="card-img rounded-start"
+                    alt="..."
+                  />
+                </div>
+                <div class="col-6">
+                  <div class="card-body">
+                    <h5 class="card-title">New Arrival</h5>
+                    <p class="card-text">
+                      This is a wider card with supporting text below as a
+                      natural lead-in to additional content. This content is a
+                      little bit longer.
+                    </p>
                     <p class="card-text">
                       <small class="text-body-secondary">
                         Last updated 3 mins ago
@@ -164,13 +163,15 @@ export default function HomePage() {
             </div>
           </div>
           <div class="col-md-4 mt-5">
-            <div
-              class="card"
-              style={{ width: "40rem", height: "25rem" }}
-            >
+            <div class="card">
               <div class="row">
                 <div class="col-6">
-                  <img src="https://images.pexels.com/photos/1209611/pexels-photo-1209611.jpeg" height="398rem" class="card-img rounded-start" alt="..." />
+                  <img
+                    src="https://images.pexels.com/photos/1209611/pexels-photo-1209611.jpeg"
+                    height="250rem"
+                    class="card-img rounded-start"
+                    alt="..."
+                  />
                 </div>
                 <div class="col-6">
                   <div class="card-body">
@@ -180,10 +181,6 @@ export default function HomePage() {
                       natural lead-in to additional content. This content is a
                       little bit longer.
                     </p>
-                    
-                    <br />
-                    <br />
-                    <br />
                     <p class="card-text">
                       <small class="text-body-secondary">
                         Last updated 3 mins ago
@@ -196,6 +193,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
       <Footer />
     </>
   );

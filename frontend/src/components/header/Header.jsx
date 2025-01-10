@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
+import {useNavigate} from 'react-router-dom';
 export default function Header() {
+  const navigate = useNavigate();
   return (
     <>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -22,7 +24,7 @@ export default function Header() {
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item mx-2">
-                <a class="nav-link"  href="#">
+                <a class="nav-link"  href="/mens">
                   Men
                 </a>
               </li>
