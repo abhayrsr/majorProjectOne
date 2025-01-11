@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 const path = require('path');
 // Configure dotenv with the correct path
-require('dotenv').config({ path: path.resolve(__dirname, '../../../../.env') });
+require('dotenv').config({ path: path.resolve(__dirname, '../../../.env') });
 
 const mongoUri = process.env.MONGODB_URI;
-console.log(mongoUri)
 
 const initializeDatabase = async () => {
   try{
