@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const {initializeDatabase} = require('./src/config/db/db.connect');
-
+const MensClothes = require("./src/models/mens.model.js");
 dotenv.config();
 
 const app = express();
@@ -15,8 +15,25 @@ app.use(express.json());
 initializeDatabase();
 
 // Routes
-app.use('/api', () => {
-  console.log("connected to api")
+async function readAllClothes(){
+  try{
+    const allMensClothes = await MensClothes.find();
+    return allMensClothes
+  } catch(error){
+    console.log(error);
+  }
+}
+app.get('/mens', async(req, res) => {
+  try{
+    const mensClothes = await readAllClothes();
+    if(mensClothes.length !== 0){
+      res.json(mensClothes);
+    } else {
+      res.status(404).json({error: "No clothes found"});
+    }
+  } catch(error){
+    res.status(500).json({error: "Failed to fetch movies."})
+  }
 });
 
 const PORT = process.env.PORT || 5000;
