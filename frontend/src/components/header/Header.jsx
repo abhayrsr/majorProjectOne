@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 import {useNavigate} from 'react-router-dom';
+import "./Header.css"
 export default function Header() {
   const navigate = useNavigate();
   return (
@@ -59,7 +60,7 @@ export default function Header() {
                   />
                 </form>
               </li>
-              <li class="nav-item ms-5">
+              <li class="nav-item ms-sm-5 custom-margin">
                 <form class="d-flex" role="search">
                   <button class="btn btn-outline-success mr-1" type="submit">
                     Login
@@ -67,12 +68,12 @@ export default function Header() {
                 </form>
               </li>
               <li class="nav-item ms-4">
-                <div class="mt-1">
+                <div class="mt-1 custom-heart">
                   <FontAwesomeIcon icon={faHeart} />
                 </div>
               </li>
               <li class="nav-item ms-4">
-                <div class="mt-1">
+                <div class="mt-1 custom-cart">
                   <FontAwesomeIcon icon={faCartShopping} />
                 </div>
               </li>

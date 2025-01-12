@@ -1,0 +1,16 @@
+@media (max-width: 768px) { /* Adjust for tablet and mobile screens */
+    .custom-margin {
+      margin-left: 21rem !important; /* Overrides bootstrap margin */
+      margin-top: 1rem;
+    }
+
+    .custom-heart{
+      margin-right: 1rem;
+      margin-top: 0.8rem !important;
+    }
+
+    .custom-cart{
+      margin-right: 1rem;
+      margin-top: 0.8rem !important;
+    }
+  }
