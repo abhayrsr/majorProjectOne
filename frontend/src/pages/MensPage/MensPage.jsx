@@ -7,6 +7,7 @@ export default function MensPage() {
   const [mensData, setMensData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [buttonState, setButtonState] = useState([]);
 
   useEffect(() => {
     const fetchMensProducts = async () => {
@@ -17,7 +18,6 @@ export default function MensPage() {
           throw new Error("Failed to fetch");
         }
         const data = await response.json();
-        console.log("data", data);
         setMensData(data);
       } catch (error) {
         setError(error.message);
@@ -29,6 +29,16 @@ export default function MensPage() {
 
     fetchMensProducts();
   }, []);
+
+  useEffect(() => {
+    setButtonState(Array(mensData.length).fill(false));
+  }, [mensData])
+
+  const buttonClick = (index) => {
+    setButtonState(prevState => {
+      return prevState.map((button, i) => i === index ? !button : button)
+    })
+  }
 
   return (
     <>
@@ -49,29 +59,35 @@ export default function MensPage() {
             <h5 class="position-absolute top-0 start-0 m-3">
               Showing All Products{" "}
               <span class="custom-span">(Showing 20 products)</span>
-              {mensData.map((product) => (
-                
-                <div key={product.id} className="col-md-4 mb-4">
-                  <div
-                    className="card"
-                    style={{ width: "18rem", height: "22rem" }}
-                  >
-                    <img
-                      src={product.image}
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">{product.name}</h5>
-                      <p className="card-text">{product.description}</p>
-                      <a href="#" className="btn btn-primary">
-                        Add to Cart
-                      </a>
+              </h5>
+              <div className="row mt-5">
+                {mensData.map((product, index) => (
+                  <div key={index} className="col-md-4 mb-4">
+                    <div
+                      className="card"
+                      style={{ width: "18rem",  }}
+                    >
+                      <img
+                        src={product.image}
+                        className="card-img-top"
+                        alt="..."
+                        height="350rem"
+                      />
+                      <div className="card-body">
+                        <h5 className="card-title">{product.name}</h5>
+                        <p className="card-text">{product.description}</p>
+                        <p><span className="fw-bold">Price: </span> ${product.price}</p>
+                        <div onClick={() => buttonClick(index)}>
+                          {!buttonState[index] ? <a href="#" className="btn btn-secondary m-2" key={index}>Add to Cart</a> : <a href="#" className="btn btn-secondary m-2" key={index}>Go to Cart</a>}
+                        </div>
+                        <a href="#" className="btn btn-secondary">
+                          Save to Wishlist
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </h5>
+                ))}
+              </div>
           </div>
         </div>
       </div>
