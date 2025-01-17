@@ -5,7 +5,6 @@ const fs = require('fs');
 const MensClothes = require('../models/mens.model')
 require('dotenv/config')
 
-initializeDatabase();
 
 const jsonData = fs.readFileSync('../data/mens.json', 'utf-8')
 const clothesData = JSON.parse(jsonData);
@@ -18,6 +17,8 @@ async function seedingData(){
                 description: clothes.description,
                 image: clothes.image,
                 price: clothes.price,
+                category: clothes.category,
+                rating: clothes.rating,
                 sku: clothes.sku
             })
             newClothes.save()
@@ -27,4 +28,15 @@ async function seedingData(){
     }
 }
 
-// seedingData();
+async function main(){
+    try{
+        await initializeDatabase();
+        await seedingData();
+        console.log("data seeded successfully");
+    } catch(error){
+        console.log("error while seeding", error);
+    }
+}
+
+main();
+

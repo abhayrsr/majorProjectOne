@@ -12,7 +12,16 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB
-initializeDatabase();
+
+async function main(){
+  try{
+    await initializeDatabase();
+  } catch(error){
+    console.log("error during initialization", error);
+  }
+}
+
+main();
 
 // Routes
 async function readAllClothes(){

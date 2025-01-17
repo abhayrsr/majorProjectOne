@@ -5,6 +5,8 @@ const clothesSchema = new mongoose.Schema({
     description: String,
     image: String,
     price: Number,
+    category: String,
+    rating: Number,
     sku: String,
 
 })
