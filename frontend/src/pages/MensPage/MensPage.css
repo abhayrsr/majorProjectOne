@@ -5,3 +5,13 @@
 .bg-body-tertiary{
     background-color: #f8f9fa !important;
 }
+
+.custom-rating{
+  margin-right: 30rem;
+  display: flex;
+  justify-content:flex-start;
+}
+
+.form-check-label{
+  margin-right: 10rem;
+}
