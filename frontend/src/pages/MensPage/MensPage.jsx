@@ -12,11 +12,9 @@ export default function MensPage() {
   const [value, setValue] = useState(0);
   const [buttonState, setButtonState] = useState(0);
   const [wishlistState, setWishlistState] = useState([]);
-  const [isCheckedCategory, setIsCheckedCategory] = useState({
-    men: false,
-    women: false,
-  });
-  const [isRadioChecked, setRadioChecked] = useState(0);
+  const [isCheckedCategory, setIsCheckedCategory] = useState([]);
+  const [isRadioChecked, setRadioChecked] = useState(null);
+  const [firstFilter, setFirstFilter] = useState(null);
 
   useEffect(() => {
     const fetchMensProducts = async () => {
@@ -56,44 +54,68 @@ export default function MensPage() {
     });
   };
 
+  
+
   const handlePriceFilter = (event, newValue) => {
     setValue(newValue);
-    const filteredDataByPrice =
-      filteredData.length === 0
-        ? mensData.filter((item) => item.price >= newValue)
-        : filteredData.filter((item) => item.category === event.target.value);
-    setFilteredData(filteredDataByPrice);
+
+    if (filteredData.length === 0 || firstFilter.price) {
+      setFirstFilter((prev) => ({ ...prev, price: true }));
+      const filteredDataByPrice = mensData.filter(
+        (item) => item.price >= event.target.value
+      );
+      setFilteredData(filteredDataByPrice);
+    } else {
+      const filteredDataByPrice = filteredData.filter(
+        (item) => item.price >= event.target.value
+      );
+      setFilteredData(filteredDataByPrice);
+    }
   };
 
   const handleCheckboxCategory = (event) => {
     const { name } = event.target;
+    const isChecked = !isCheckedCategory[name];
+
     console.log(isCheckedCategory[name]);
     setIsCheckedCategory((prev) => ({
       ...prev,
       [name]: !isCheckedCategory[name],
     }));
 
-    const filteredDataByCat =
-      filteredData.length === 0
+    if (filteredData.length === 0 || firstFilter.category) {
+      setFirstFilter((prev) => ({ ...prev, category: true }));
+      const filteredDataByCat = isChecked
         ? mensData.filter((item) => item.category === event.target.value)
-        : filteredData.filter((item) => item.category === event.target.value);
-
-    setFilteredData(filteredDataByCat);
+        : mensData.filter((item) => item.category !== event.target.value);
+      setFilteredData(filteredDataByCat);
+    } else {
+      const filteredDataByCat = isChecked ? filteredData.filter(
+        (item) => item.category === event.target.value
+      ) : filteredData.filter((item) => item.category !== event.target.value);
+      setFilteredData(filteredDataByCat);
+    }
   };
 
   const handleRadioChecked = (event) => {
     console.log(event.target.value);
-    setRadioChecked(Number(event.target.value))
+    setRadioChecked(Number(event.target.value));
 
-    const filteredDataByRadio =
-      filteredData.length === 0
-        ? mensData.filter((item) => item.rating >= Number(event.target.value))
-        : filteredData.filter(
-            (item) => item.category >= Number(event.target.value)
-          );
+    if (filteredData.length === 0) {
+      setFirstFilter((prev) => ({ ...prev, rating: true }));
+    }
 
-    console.log(filteredDataByRadio)
-    setFilteredData(filteredDataByRadio);
+    if (firstFilter.rating) {
+      const filteredDataByRadio = mensData.filter(
+        (item) => item.rating >= Number(event.target.value)
+      );
+      setFilteredData(filteredDataByRadio);
+    } else {
+      const filteredDataByRadio = filteredData.filter(
+        (item) => item.rating >= Number(event.target.value)
+      );
+      setFilteredData(filteredDataByRadio);
+    }
   };
 
   return (
@@ -160,7 +182,7 @@ export default function MensPage() {
               <input
                 class="form-check-input"
                 type="radio"
-                checked={isRadioChecked.four}
+                checked={isRadioChecked}
                 value={4}
                 name="rating"
                 onChange={handleRadioChecked}
@@ -174,7 +196,7 @@ export default function MensPage() {
               <input
                 class="form-check-input"
                 type="radio"
-                checked={isRadioChecked.three}
+                checked={isRadioChecked}
                 value={3}
                 name="rating"
                 onChange={handleRadioChecked}
@@ -188,7 +210,7 @@ export default function MensPage() {
               <input
                 class="form-check-input"
                 type="radio"
-                checked={isRadioChecked.two}
+                checked={isRadioChecked}
                 value={2}
                 name="rating"
                 onChange={handleRadioChecked}
@@ -202,7 +224,7 @@ export default function MensPage() {
               <input
                 class="form-check-input"
                 type="radio"
-                checked={isRadioChecked.one}
+                checked={isRadioChecked}
                 value={1}
                 name="rating"
                 onChange={handleRadioChecked}
@@ -220,7 +242,8 @@ export default function MensPage() {
                 (
                 {value !== 0 ||
                 isCheckedCategory.men !== false ||
-                isCheckedCategory.women !== false || isRadioChecked !== 0
+                isCheckedCategory.women !== false ||
+                isRadioChecked !== 0
                   ? filteredData.length > 0
                     ? `Showing ${filteredData.length} products`
                     : `No product`
@@ -229,9 +252,7 @@ export default function MensPage() {
               </span>
             </h5>
             <div className="row mt-5">
-              {value !== 0 ||
-                isCheckedCategory.men !== false ||
-                isCheckedCategory.women !== false || isRadioChecked !== 0
+              {value !== 0
                 ? filteredData.map((product, index) => (
                     <div key={index} className="col-md-4 mb-4">
                       <div className="card" style={{ width: "18rem" }}>
@@ -239,7 +260,7 @@ export default function MensPage() {
                           src={product.image}
                           className="card-img-top"
                           alt="..."
-                          height="250rem"
+                          height="350rem"
                         />
                         <div className="card-body">
                           <h5 className="card-title">{product.name}</h5>

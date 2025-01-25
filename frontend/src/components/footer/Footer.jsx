@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <>
-      <div class="text-center mt-5 bg-body-tertiary text-center">
+      <div class="text-center mt-5 pb-5 bg-body-tertiary text-center">
         <div class="container">
           <div class="row">
             <div class="col-6 mt-3 ">
