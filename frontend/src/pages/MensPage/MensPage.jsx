@@ -9,12 +9,12 @@ export default function MensPage() {
   const [filteredData, setFilteredData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const [value, setValue] = useState(0);
   const [buttonState, setButtonState] = useState(0);
   const [wishlistState, setWishlistState] = useState([]);
-  const [isCheckedCategory, setIsCheckedCategory] = useState([]);
-  const [isRadioChecked, setRadioChecked] = useState(null);
-  const [firstFilter, setFirstFilter] = useState(null);
+  const [category, setCategory] = useState([]);
+  const [categoryCheck, setCategoryCheck] = useState({men: false, women: false});
+  const [rating, setRating] = useState(0);
+  const [price, setPrice] = useState(0);
 
   useEffect(() => {
     const fetchMensProducts = async () => {
@@ -54,68 +54,52 @@ export default function MensPage() {
     });
   };
 
-  
-
   const handlePriceFilter = (event, newValue) => {
-    setValue(newValue);
+    const filteredPrice = newValue;
+    setPrice(filteredPrice);
+    handleFilteration(filteredPrice, categoryCheck, rating);
 
-    if (filteredData.length === 0 || firstFilter.price) {
-      setFirstFilter((prev) => ({ ...prev, price: true }));
-      const filteredDataByPrice = mensData.filter(
-        (item) => item.price >= event.target.value
-      );
-      setFilteredData(filteredDataByPrice);
-    } else {
-      const filteredDataByPrice = filteredData.filter(
-        (item) => item.price >= event.target.value
-      );
-      setFilteredData(filteredDataByPrice);
-    }
   };
 
   const handleCheckboxCategory = (event) => {
-    const { name } = event.target;
-    const isChecked = !isCheckedCategory[name];
+    const id = event.target.id;
+    let flagMen, flagWomen;
 
-    console.log(isCheckedCategory[name]);
-    setIsCheckedCategory((prev) => ({
-      ...prev,
-      [name]: !isCheckedCategory[name],
-    }));
-
-    if (filteredData.length === 0 || firstFilter.category) {
-      setFirstFilter((prev) => ({ ...prev, category: true }));
-      const filteredDataByCat = isChecked
-        ? mensData.filter((item) => item.category === event.target.value)
-        : mensData.filter((item) => item.category !== event.target.value);
-      setFilteredData(filteredDataByCat);
-    } else {
-      const filteredDataByCat = isChecked ? filteredData.filter(
-        (item) => item.category === event.target.value
-      ) : filteredData.filter((item) => item.category !== event.target.value);
-      setFilteredData(filteredDataByCat);
+    if(id === "menCheck"){
+      flagMen = !categoryCheck.men;
+      flagWomen = categoryCheck.women;
+      setCategoryCheck((prev) => ({...prev, men: !prev.men}));
+    } else if(id === "womenCheck") {
+      flagMen = categoryCheck.men;
+      flagWomen = !categoryCheck.women;
+      setCategoryCheck((prev) => ({...prev, women: !prev.women}));
     }
+
+    console.log(flagMen, flagWomen);
+    handleFilteration(price, categoryCheck, rating)
+
   };
 
   const handleRadioChecked = (event) => {
-    console.log(event.target.value);
-    setRadioChecked(Number(event.target.value));
+    const filteredRating = Number(event.target.value);
+    setRating(filteredRating);
+    handleFilteration(price, categoryCheck, filteredRating);
+    console.log("rating",filteredRating);
 
-    if (filteredData.length === 0) {
-      setFirstFilter((prev) => ({ ...prev, rating: true }));
-    }
+  };
 
-    if (firstFilter.rating) {
-      const filteredDataByRadio = mensData.filter(
-        (item) => item.rating >= Number(event.target.value)
-      );
-      setFilteredData(filteredDataByRadio);
-    } else {
-      const filteredDataByRadio = filteredData.filter(
-        (item) => item.rating >= Number(event.target.value)
-      );
-      setFilteredData(filteredDataByRadio);
-    }
+  const handleFilteration = (price, category, rating) => {
+    const filteredData =
+      mensData.filter(
+            (item) =>
+              item.price >= price &&
+              item.rating >= rating 
+          );
+
+    
+    console.log(filteredData);
+
+    setFilteredData(filteredData);
   };
 
   return (
@@ -150,13 +134,12 @@ export default function MensPage() {
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    checked={isCheckedCategory.men}
                     value="Men"
-                    name="men"
+                    name="category"
                     onChange={handleCheckboxCategory}
                     id="menCheck"
                   />
-                  <label class="form-check-label" for="menCheck">
+                  <label class="form-check-label" htmlFor="menCheck">
                     Men
                   </label>
                 </div>
@@ -164,13 +147,13 @@ export default function MensPage() {
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    checked={isCheckedCategory.women}
                     value="Women"
-                    name="women"
-                    onChange={handleCheckboxCategory}
+                    name="category"
                     id="womenCheck"
+                    onChange={handleCheckboxCategory}
+                    
                   />
-                  <label class="form-check-label" for="womenCheck">
+                  <label class="form-check-label" htmlFor="womenCheck">
                     Women
                   </label>
                 </div>
@@ -182,13 +165,12 @@ export default function MensPage() {
               <input
                 class="form-check-input"
                 type="radio"
-                checked={isRadioChecked}
                 value={4}
                 name="rating"
                 onChange={handleRadioChecked}
                 id="flexRadio4"
               />
-              <label class="form-check-label" for="flexRadio4">
+              <label class="form-check-label" htmlFor="flexRadio4">
                 4 star and above
               </label>
             </div>
@@ -196,13 +178,12 @@ export default function MensPage() {
               <input
                 class="form-check-input"
                 type="radio"
-                checked={isRadioChecked}
                 value={3}
                 name="rating"
                 onChange={handleRadioChecked}
                 id="flexRadio3"
               />
-              <label class="form-check-label" for="flexRadio3">
+              <label class="form-check-label" htmlFor="flexRadio3">
                 3 star and above
               </label>
             </div>
@@ -210,13 +191,12 @@ export default function MensPage() {
               <input
                 class="form-check-input"
                 type="radio"
-                checked={isRadioChecked}
                 value={2}
                 name="rating"
                 onChange={handleRadioChecked}
                 id="flexRadio2"
               />
-              <label class="form-check-label" for="flexRadio2">
+              <label class="form-check-label" htmlFor="flexRadio2">
                 2 star and above
               </label>
             </div>
@@ -224,13 +204,12 @@ export default function MensPage() {
               <input
                 class="form-check-input"
                 type="radio"
-                checked={isRadioChecked}
                 value={1}
                 name="rating"
                 onChange={handleRadioChecked}
                 id="flexRadio1"
               />
-              <label class="form-check-label" for="flexRadio1">
+              <label class="form-check-label" htmlFor="flexRadio1">
                 1 star and above
               </label>
             </div>
@@ -240,19 +219,19 @@ export default function MensPage() {
               Showing All Products{" "}
               <span class="custom-span">
                 (
-                {value !== 0 ||
+                {/* {value !== 0 ||
                 isCheckedCategory.men !== false ||
                 isCheckedCategory.women !== false ||
                 isRadioChecked !== 0
                   ? filteredData.length > 0
                     ? `Showing ${filteredData.length} products`
                     : `No product`
-                  : `Showing ${mensData.length} products`}
+                  : `Showing ${mensData.length} products`} */}
                 )
               </span>
             </h5>
             <div className="row mt-5">
-              {value !== 0
+              {price !== 0 || category.length !== 0 || rating !== 0
                 ? filteredData.map((product, index) => (
                     <div key={index} className="col-md-4 mb-4">
                       <div className="card" style={{ width: "18rem" }}>
