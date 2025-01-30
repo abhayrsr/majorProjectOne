@@ -57,7 +57,7 @@ export default function MensPage() {
   const handlePriceFilter = (event, newValue) => {
     const filteredPrice = newValue;
     setPrice(filteredPrice);
-    handleFilteration(filteredPrice, categoryCheck, rating);
+    handleFilteration(filteredPrice, category, rating);
 
   };
 
@@ -75,31 +75,47 @@ export default function MensPage() {
       setCategoryCheck((prev) => ({...prev, women: !prev.women}));
     }
 
-    console.log(flagMen, flagWomen);
-    handleFilteration(price, categoryCheck, rating)
+    let filterCategory;
 
+    if (flagMen && flagWomen) {
+      filterCategory = mensData;
+      setCategory(filterCategory);
+    } else if (flagMen) {
+      filterCategory = mensData.filter((item) => item.category === "Men");
+      setCategory(filterCategory);
+    } else if (flagWomen) {
+      filterCategory = mensData.filter((item) => item.category === "Women");
+      setCategory(filterCategory);
+    } else {
+      filterCategory = mensData;
+      setCategory(filterCategory);
+    }
+
+    console.log('x', filterCategory)
+
+    handleFilteration(price, filterCategory, rating);
   };
 
   const handleRadioChecked = (event) => {
     const filteredRating = Number(event.target.value);
     setRating(filteredRating);
-    handleFilteration(price, categoryCheck, filteredRating);
+    handleFilteration(price, category, filteredRating);
     console.log("rating",filteredRating);
 
   };
 
   const handleFilteration = (price, category, rating) => {
-    const filteredData =
+    console.log('y', category);
+    const filteredProducts = category.length === 0 ?
       mensData.filter(
             (item) =>
               item.price >= price &&
               item.rating >= rating 
-          );
+          ) : category.filter((item) => item.price >= price && item.rating >= rating);
 
-    
-    console.log(filteredData);
 
-    setFilteredData(filteredData);
+    console.log(filteredProducts)
+    setFilteredData(filteredProducts);
   };
 
   return (
@@ -219,19 +235,14 @@ export default function MensPage() {
               Showing All Products{" "}
               <span class="custom-span">
                 (
-                {/* {value !== 0 ||
-                isCheckedCategory.men !== false ||
-                isCheckedCategory.women !== false ||
-                isRadioChecked !== 0
-                  ? filteredData.length > 0
+                {filteredData.length > 0
                     ? `Showing ${filteredData.length} products`
-                    : `No product`
-                  : `Showing ${mensData.length} products`} */}
+                  : `Showing ${mensData.length} products`} 
                 )
               </span>
             </h5>
             <div className="row mt-5">
-              {price !== 0 || category.length !== 0 || rating !== 0
+              {filteredData.length !== 0
                 ? filteredData.map((product, index) => (
                     <div key={index} className="col-md-4 mb-4">
                       <div className="card" style={{ width: "18rem" }}>
