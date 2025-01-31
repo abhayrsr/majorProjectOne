@@ -12,7 +12,10 @@ export default function MensPage() {
   const [buttonState, setButtonState] = useState(0);
   const [wishlistState, setWishlistState] = useState([]);
   const [category, setCategory] = useState([]);
-  const [categoryCheck, setCategoryCheck] = useState({men: false, women: false});
+  const [categoryCheck, setCategoryCheck] = useState({
+    men: false,
+    women: false,
+  });
   const [rating, setRating] = useState(0);
   const [price, setPrice] = useState(0);
 
@@ -58,21 +61,20 @@ export default function MensPage() {
     const filteredPrice = newValue;
     setPrice(filteredPrice);
     handleFilteration(filteredPrice, category, rating);
-
   };
 
   const handleCheckboxCategory = (event) => {
     const id = event.target.id;
     let flagMen, flagWomen;
 
-    if(id === "menCheck"){
+    if (id === "menCheck") {
       flagMen = !categoryCheck.men;
       flagWomen = categoryCheck.women;
-      setCategoryCheck((prev) => ({...prev, men: !prev.men}));
-    } else if(id === "womenCheck") {
+      setCategoryCheck((prev) => ({ ...prev, men: !prev.men }));
+    } else if (id === "womenCheck") {
       flagMen = categoryCheck.men;
       flagWomen = !categoryCheck.women;
-      setCategoryCheck((prev) => ({...prev, women: !prev.women}));
+      setCategoryCheck((prev) => ({ ...prev, women: !prev.women }));
     }
 
     let filterCategory;
@@ -91,7 +93,7 @@ export default function MensPage() {
       setCategory(filterCategory);
     }
 
-    console.log('x', filterCategory)
+    // console.log("x", filterCategory);
 
     handleFilteration(price, filterCategory, rating);
   };
@@ -100,23 +102,54 @@ export default function MensPage() {
     const filteredRating = Number(event.target.value);
     setRating(filteredRating);
     handleFilteration(price, category, filteredRating);
-    console.log("rating",filteredRating);
-
+    // console.log("rating", filteredRating);
   };
 
   const handleFilteration = (price, category, rating) => {
-    console.log('y', category);
-    const filteredProducts = category.length === 0 ?
-      mensData.filter(
-            (item) =>
-              item.price >= price &&
-              item.rating >= rating 
-          ) : category.filter((item) => item.price >= price && item.rating >= rating);
+    console.log("y", category);
+    const filteredProducts =
+      category.length === 0
+        ? mensData.filter(
+            (item) => item.price >= price && item.rating >= rating
+          )
+        : category.filter(
+            (item) => item.price >= price && item.rating >= rating
+          );
 
-
-    console.log(filteredProducts)
+    // console.log(filteredProducts);
     setFilteredData(filteredProducts);
   };
+
+  const handleSort = (event) => {
+    const sortType = event.target.value;
+    const mensDataSpread = [...mensData];
+    const filteredDataSpread = [...filteredData];
+  
+    if (sortType === "sortLowToHigh") {
+
+      const filterBySorting =
+        filteredData.length === 0
+          ? mensDataSpread.sort((a, b) => a.price - b.price)
+          : filteredDataSpread.sort((a, b) => a.price - b.price);
+      console.log("L", mensData);
+      setFilteredData(filterBySorting);
+    } else {
+      
+      const filterBySorting =
+        filteredData.length === 0
+          ? mensDataSpread.sort((a, b) => b.price - a.price)
+          : filteredDataSpread.sort((a, b) => b.price - a.price);
+
+          console.log("H", mensData);
+      setFilteredData([...filterBySorting]);
+    }
+  };
+
+  const handleClear = (event) => {
+    window.location.reload();
+  }
+
+
 
   return (
     <>
@@ -136,12 +169,12 @@ export default function MensPage() {
                   step={20}
                   marks
                   min={0}
-                  max={100}
+                  max={80}
                   onChange={handlePriceFilter}
                 />
               </div>
               <div class="col-md-6">
-                <h5 class="m-3">Clear</h5>
+                <h5 class="m-3" onClick={handleClear} style={{cursor: "pointer"}}>Clear</h5>
               </div>
 
               <div class="col-md-3">
@@ -167,7 +200,6 @@ export default function MensPage() {
                     name="category"
                     id="womenCheck"
                     onChange={handleCheckboxCategory}
-                    
                   />
                   <label class="form-check-label" htmlFor="womenCheck">
                     Women
@@ -229,6 +261,34 @@ export default function MensPage() {
                 1 star and above
               </label>
             </div>
+
+            <div class="form-check">
+              <h5 class="custom-rating my-3">Sort</h5>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="sort"
+                value="sortLowToHigh"
+                onChange={handleSort}
+                id="sortLowToHigh"
+              />
+              <label class="form-check-label" htmlFor="sortLowToHigh">
+                Low to High
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="sort"
+                value="sortHighToLow"
+                onChange={handleSort}
+                id="sortHighToLow"
+              />
+              <label class="form-check-label" htmlFor="sortHighToLow">
+                High to Low
+              </label>
+            </div>
           </div>
           <div class="col-md-9 bg-body-tertiary position-relative">
             <h5 class="position-absolute top-0 start-0 m-3">
@@ -236,8 +296,8 @@ export default function MensPage() {
               <span class="custom-span">
                 (
                 {filteredData.length > 0
-                    ? `Showing ${filteredData.length} products`
-                  : `Showing ${mensData.length} products`} 
+                  ? `Showing ${filteredData.length} products`
+                  : `Showing ${mensData.length} products`}
                 )
               </span>
             </h5>
