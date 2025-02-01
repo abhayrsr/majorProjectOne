@@ -1,138 +1,212 @@
 [
-    {
-      "name": "T-Shirt",
-      "description": "Great fit, super comfy",
-      "image": "https://i.imgur.com/KeQtXT3.png",
-      "price": 25,
-      "category": "Men",
-      "rating": 3,
-      "sku": "123"
-    },
-    {
-      "name": "Sweater",
-      "description": "Awesome for cold days",
-      "image": "https://i.imgur.com/fVpadKg.png",
-      "price": 50,
-      "category": "Men",
-      "rating": 4,
-      "sku": "456"
-    },
-    {
-      "name": "Button Down",
-      "description": "A little fancier",
-      "image": "https://i.imgur.com/JxGBvyj.png",
-      "price": 30,
-      "category": "Men",
-      "rating": 2,
-      "sku": "789"
-    },
-    {
-      "name": "Jeans",
-      "description": "Durable and stylish denim",
-      "image": "https://i.imgur.com/9wCg1Ud.png",
-      "price": 60,
-      "category": "Men",
-      "rating": 3,
-      "sku": "101"
-    },
-    {
-      "name": "Jacket",
-      "description": "Lightweight and warm",
-      "image": "https://i.imgur.com/XHkVoUk.png",
-      "price": 80,
-      "category": "Men",
-      "rating": 4,
-      "sku": "102"
-    },
-    {
-      "name": "Hoodie",
-      "description": "Casual and cozy",
-      "image": "https://i.imgur.com/NpyDwEb.png",
-      "price": 45,
-      "category": "Men",
-      "rating": 4,
-      "sku": "103"
-    },
-    {
-      "name": "Chinos",
-      "description": "Perfect for business casual",
-      "image": "https://i.imgur.com/oI6Xq0L.png",
-      "price": 40,
-      "category": "Men",
-      "rating": 5,
-      "sku": "104"
-    },
-    {
-      "name": "Polo Shirt",
-      "description": "Great for semi-formal occasions",
-      "image": "https://i.imgur.com/6BqkqLb.png",
-      "price": 35,
-      "category": "Men",
-      "rating": 3.5,
-      "sku": "105"
-    },
-    {
-      "name": "Shorts",
-      "description": "Perfect for summer days",
-      "image": "https://i.imgur.com/XksyEdK.png",
-      "price": 20,
-      "category": "Men",
-      "rating": 4.5,
-      "sku": "106"
-    },
-    {
-      "name": "Blazer",
-      "description": "Professional and classy",
-      "image": "https://i.imgur.com/jxGwGcj.png",
-      "price": 90,
-      "category": "Men",
-      "rating": 2.5,
-      "sku": "107"
-    },
-    {
-      "name": "Skirt",
-      "description": "Flattering and comfortable",
-      "image": "https://i.imgur.com/5EwxYr1.png",
-      "price": 30,
-      "category": "Women",
-      "rating": 3,
-      "sku": "108"
-    },
-    {
-      "name": "Dress",
-      "description": "Elegant and versatile",
-      "image": "https://i.imgur.com/qGZ8jVR.png",
-      "price": 70,
-      "category": "Women",
-      "rating": 4,
-      "sku": "109"
-    },
-    {
-      "name": "Leggings",
-      "description": "Soft and stretchy for all-day comfort",
-      "image": "https://i.imgur.com/9LrxTeJ.png",
-      "price": 25,
-      "category": "Women",
-      "rating": 5,
-      "sku": "110"
-    },
-    {
-      "name": "Tank Top",
-      "description": "Perfect for layering or summer wear",
-      "image": "https://i.imgur.com/NK5URhR.png",
-      "price": 15,
-      "category": "Women",
-      "rating": 2.5,
-      "sku": "111"
-    },
-    {
-      "name": "Cardigan",
-      "description": "A cozy and stylish layering piece",
-      "image": "https://i.imgur.com/4jy3rI7.png",
-      "price": 55,
-      "category": "Women",
-      "rating": 3,
-      "sku": "112"
-    }
-  ]
-  
+  {
+    "name": "T-Shirt",
+    "description": "Great fit, super comfy",
+    "details": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat nunc vitae condimentum commodo. Aenean malesuada pulvinar magna, in maximus nulla egestas eget. Ut facilisis purus tristique imperdiet malesuada. Maecenas et velit dignissim, dictum nisi sodales, venenatis nisi.",
+      "Phasellus placerat euismod mi, vitae efficitur ipsum. Vivamus rhoncus ante eu nisl fringilla, at congue odio vestibulum. Donec dapibus nunc in quam rutrum consequat.",
+      "Nullam suscipit bibendum massa vitae lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer fermentum efficitur nisl, ultricies malesuada ex gravida at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+    ],
+    "image": "https://www.kindpng.com/picc/m/690-6904538_men-profile-icon-png-image-free-download-searchpng.png",
+    "price": 25,
+    "category": "Men",
+    "rating": 3,
+    "sku": "123"
+  },
+  {
+    "name": "Sweater",
+    "description": "Awesome for cold days",
+    "details": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat nunc vitae condimentum commodo. Aenean malesuada pulvinar magna, in maximus nulla egestas eget. Ut facilisis purus tristique imperdiet malesuada. Maecenas et velit dignissim, dictum nisi sodales, venenatis nisi.",
+      "Phasellus placerat euismod mi, vitae efficitur ipsum. Vivamus rhoncus ante eu nisl fringilla, at congue odio vestibulum. Donec dapibus nunc in quam rutrum consequat.",
+      "Nullam suscipit bibendum massa vitae lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer fermentum efficitur nisl, ultricies malesuada ex gravida at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+    ],
+    "image": "https://www.kindpng.com/picc/m/690-6904538_men-profile-icon-png-image-free-download-searchpng.png",
+    "price": 50,
+    "category": "Men",
+    "rating": 4,
+    "sku": "456"
+  },
+  {
+    "name": "Button Down",
+    "description": "A little fancier",
+    "details": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat nunc vitae condimentum commodo. Aenean malesuada pulvinar magna, in maximus nulla egestas eget. Ut facilisis purus tristique imperdiet malesuada. Maecenas et velit dignissim, dictum nisi sodales, venenatis nisi.",
+      "Phasellus placerat euismod mi, vitae efficitur ipsum. Vivamus rhoncus ante eu nisl fringilla, at congue odio vestibulum. Donec dapibus nunc in quam rutrum consequat.",
+      "Nullam suscipit bibendum massa vitae lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer fermentum efficitur nisl, ultricies malesuada ex gravida at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+    ],
+    "image": "https://www.kindpng.com/picc/m/690-6904538_men-profile-icon-png-image-free-download-searchpng.png",
+    "price": 30,
+    "category": "Men",
+    "rating": 2,
+    "sku": "789"
+  },
+  {
+    "name": "Jeans",
+    "description": "Durable and stylish denim",
+    "details": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat nunc vitae condimentum commodo. Aenean malesuada pulvinar magna, in maximus nulla egestas eget. Ut facilisis purus tristique imperdiet malesuada. Maecenas et velit dignissim, dictum nisi sodales, venenatis nisi.",
+      "Phasellus placerat euismod mi, vitae efficitur ipsum. Vivamus rhoncus ante eu nisl fringilla, at congue odio vestibulum. Donec dapibus nunc in quam rutrum consequat.",
+      "Nullam suscipit bibendum massa vitae lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer fermentum efficitur nisl, ultricies malesuada ex gravida at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+    ],
+    "image": "https://www.kindpng.com/picc/m/690-6904538_men-profile-icon-png-image-free-download-searchpng.png",
+    "price": 60,
+    "category": "Men",
+    "rating": 3,
+    "sku": "101"
+  },
+  {
+    "name": "Jacket",
+    "description": "Lightweight and warm",
+    "details": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat nunc vitae condimentum commodo. Aenean malesuada pulvinar magna, in maximus nulla egestas eget. Ut facilisis purus tristique imperdiet malesuada. Maecenas et velit dignissim, dictum nisi sodales, venenatis nisi.",
+      "Phasellus placerat euismod mi, vitae efficitur ipsum. Vivamus rhoncus ante eu nisl fringilla, at congue odio vestibulum. Donec dapibus nunc in quam rutrum consequat.",
+      "Nullam suscipit bibendum massa vitae lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer fermentum efficitur nisl, ultricies malesuada ex gravida at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+    ],
+    "image": "https://www.kindpng.com/picc/m/690-6904538_men-profile-icon-png-image-free-download-searchpng.png",
+    "price": 80,
+    "category": "Men",
+    "rating": 4,
+    "sku": "102"
+  },
+  {
+    "name": "Hoodie",
+    "description": "Casual and cozy",
+    "details": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat nunc vitae condimentum commodo. Aenean malesuada pulvinar magna, in maximus nulla egestas eget. Ut facilisis purus tristique imperdiet malesuada. Maecenas et velit dignissim, dictum nisi sodales, venenatis nisi.",
+      "Phasellus placerat euismod mi, vitae efficitur ipsum. Vivamus rhoncus ante eu nisl fringilla, at congue odio vestibulum. Donec dapibus nunc in quam rutrum consequat.",
+      "Nullam suscipit bibendum massa vitae lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer fermentum efficitur nisl, ultricies malesuada ex gravida at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+    ],
+    "image": "https://www.kindpng.com/picc/m/690-6904538_men-profile-icon-png-image-free-download-searchpng.png",
+    "price": 45,
+    "category": "Men",
+    "rating": 4,
+    "sku": "103"
+  },
+  {
+    "name": "Chinos",
+    "description": "Perfect for business casual",
+    "details": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat nunc vitae condimentum commodo. Aenean malesuada pulvinar magna, in maximus nulla egestas eget. Ut facilisis purus tristique imperdiet malesuada. Maecenas et velit dignissim, dictum nisi sodales, venenatis nisi.",
+      "Phasellus placerat euismod mi, vitae efficitur ipsum. Vivamus rhoncus ante eu nisl fringilla, at congue odio vestibulum. Donec dapibus nunc in quam rutrum consequat.",
+      "Nullam suscipit bibendum massa vitae lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer fermentum efficitur nisl, ultricies malesuada ex gravida at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+    ],
+    "image": "https://www.kindpng.com/picc/m/690-6904538_men-profile-icon-png-image-free-download-searchpng.png",
+    "price": 40,
+    "category": "Men",
+    "rating": 5,
+    "sku": "104"
+  },
+  {
+    "name": "Polo Shirt",
+    "description": "Great for semi-formal occasions",
+    "details": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat nunc vitae condimentum commodo. Aenean malesuada pulvinar magna, in maximus nulla egestas eget. Ut facilisis purus tristique imperdiet malesuada. Maecenas et velit dignissim, dictum nisi sodales, venenatis nisi.",
+      "Phasellus placerat euismod mi, vitae efficitur ipsum. Vivamus rhoncus ante eu nisl fringilla, at congue odio vestibulum. Donec dapibus nunc in quam rutrum consequat.",
+      "Nullam suscipit bibendum massa vitae lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer fermentum efficitur nisl, ultricies malesuada ex gravida at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+    ],
+    "image": "https://www.kindpng.com/picc/m/690-6904538_men-profile-icon-png-image-free-download-searchpng.png",
+    "price": 35,
+    "category": "Men",
+    "rating": 3.5,
+    "sku": "105"
+  },
+  {
+    "name": "Shorts",
+    "description": "Perfect for summer days",
+    "details": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat nunc vitae condimentum commodo. Aenean malesuada pulvinar magna, in maximus nulla egestas eget. Ut facilisis purus tristique imperdiet malesuada. Maecenas et velit dignissim, dictum nisi sodales, venenatis nisi.",
+      "Phasellus placerat euismod mi, vitae efficitur ipsum. Vivamus rhoncus ante eu nisl fringilla, at congue odio vestibulum. Donec dapibus nunc in quam rutrum consequat.",
+      "Nullam suscipit bibendum massa vitae lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer fermentum efficitur nisl, ultricies malesuada ex gravida at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+    ],
+    "image": "https://www.kindpng.com/picc/m/690-6904538_men-profile-icon-png-image-free-download-searchpng.png",
+    "price": 20,
+    "category": "Men",
+    "rating": 4.5,
+    "sku": "106"
+  },
+  {
+    "name": "Blazer",
+    "description": "Professional and classy",
+    "details": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat nunc vitae condimentum commodo. Aenean malesuada pulvinar magna, in maximus nulla egestas eget. Ut facilisis purus tristique imperdiet malesuada. Maecenas et velit dignissim, dictum nisi sodales, venenatis nisi.",
+      "Phasellus placerat euismod mi, vitae efficitur ipsum. Vivamus rhoncus ante eu nisl fringilla, at congue odio vestibulum. Donec dapibus nunc in quam rutrum consequat.",
+      "Nullam suscipit bibendum massa vitae lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer fermentum efficitur nisl, ultricies malesuada ex gravida at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+    ],
+    "image": "https://www.kindpng.com/picc/m/690-6904538_men-profile-icon-png-image-free-download-searchpng.png",
+    "price": 90,
+    "category": "Men",
+    "rating": 2.5,
+    "sku": "107"
+  },
+  {
+    "name": "Skirt",
+    "description": "Flattering and comfortable",
+    "details": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat nunc vitae condimentum commodo. Aenean malesuada pulvinar magna, in maximus nulla egestas eget. Ut facilisis purus tristique imperdiet malesuada. Maecenas et velit dignissim, dictum nisi sodales, venenatis nisi.",
+      "Phasellus placerat euismod mi, vitae efficitur ipsum. Vivamus rhoncus ante eu nisl fringilla, at congue odio vestibulum. Donec dapibus nunc in quam rutrum consequat.",
+      "Nullam suscipit bibendum massa vitae lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer fermentum efficitur nisl, ultricies malesuada ex gravida at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+    ],
+    "image": "https://www.kindpng.com/picc/m/421-4212792_member-icon-female-png-download-anonymous-profile-transparent.png",
+    "price": 30,
+    "category": "Women",
+    "rating": 3,
+    "sku": "108"
+  },
+  {
+    "name": "Dress",
+    "description": "Elegant and versatile",
+    "details": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat nunc vitae condimentum commodo. Aenean malesuada pulvinar magna, in maximus nulla egestas eget. Ut facilisis purus tristique imperdiet malesuada. Maecenas et velit dignissim, dictum nisi sodales, venenatis nisi.",
+      "Phasellus placerat euismod mi, vitae efficitur ipsum. Vivamus rhoncus ante eu nisl fringilla, at congue odio vestibulum. Donec dapibus nunc in quam rutrum consequat.",
+      "Nullam suscipit bibendum massa vitae lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer fermentum efficitur nisl, ultricies malesuada ex gravida at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+    ],
+    "image": "https://www.kindpng.com/picc/m/421-4212792_member-icon-female-png-download-anonymous-profile-transparent.png",
+    "price": 70,
+    "category": "Women",
+    "rating": 4,
+    "sku": "109"
+  },
+  {
+    "name": "Leggings",
+    "description": "Soft and stretchy for all-day comfort",
+    "details": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat nunc vitae condimentum commodo. Aenean malesuada pulvinar magna, in maximus nulla egestas eget. Ut facilisis purus tristique imperdiet malesuada. Maecenas et velit dignissim, dictum nisi sodales, venenatis nisi.",
+      "Phasellus placerat euismod mi, vitae efficitur ipsum. Vivamus rhoncus ante eu nisl fringilla, at congue odio vestibulum. Donec dapibus nunc in quam rutrum consequat.",
+      "Nullam suscipit bibendum massa vitae lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer fermentum efficitur nisl, ultricies malesuada ex gravida at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+    ],
+    "image": "https://www.kindpng.com/picc/m/421-4212792_member-icon-female-png-download-anonymous-profile-transparent.png",
+    "price": 25,
+    "category": "Women",
+    "rating": 5,
+    "sku": "110"
+  },
+  {
+    "name": "Tank Top",
+    "description": "Perfect for layering or summer wear",
+    "details": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat nunc vitae condimentum commodo. Aenean malesuada pulvinar magna, in maximus nulla egestas eget. Ut facilisis purus tristique imperdiet malesuada. Maecenas et velit dignissim, dictum nisi sodales, venenatis nisi.",
+      "Phasellus placerat euismod mi, vitae efficitur ipsum. Vivamus rhoncus ante eu nisl fringilla, at congue odio vestibulum. Donec dapibus nunc in quam rutrum consequat.",
+      "Nullam suscipit bibendum massa vitae lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer fermentum efficitur nisl, ultricies malesuada ex gravida at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+    ],
+    "image": "https://www.kindpng.com/picc/m/421-4212792_member-icon-female-png-download-anonymous-profile-transparent.png",
+    "price": 15,
+    "category": "Women",
+    "rating": 2.5,
+    "sku": "111"
+  },
+  {
+    "name": "Cardigan",
+    "description": "A cozy and stylish layering piece",
+    "details": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat nunc vitae condimentum commodo. Aenean malesuada pulvinar magna, in maximus nulla egestas eget. Ut facilisis purus tristique imperdiet malesuada. Maecenas et velit dignissim, dictum nisi sodales, venenatis nisi.",
+      "Phasellus placerat euismod mi, vitae efficitur ipsum. Vivamus rhoncus ante eu nisl fringilla, at congue odio vestibulum. Donec dapibus nunc in quam rutrum consequat.",
+      "Nullam suscipit bibendum massa vitae lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer fermentum efficitur nisl, ultricies malesuada ex gravida at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+    ],
+    "image": "https://www.kindpng.com/picc/m/421-4212792_member-icon-female-png-download-anonymous-profile-transparent.png",
+    "price": 55,
+    "category": "Women",
+    "rating": 3,
+    "sku": "112"
+  }
+]
