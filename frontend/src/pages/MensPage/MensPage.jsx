@@ -3,6 +3,7 @@ import Footer from "../../components/footer/Footer";
 import Slider from "@mui/material/Slider";
 import "./MensPage.css";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function MensPage() {
   const [mensData, setMensData] = useState([]);
@@ -124,9 +125,8 @@ export default function MensPage() {
     const sortType = event.target.value;
     const mensDataSpread = [...mensData];
     const filteredDataSpread = [...filteredData];
-  
-    if (sortType === "sortLowToHigh") {
 
+    if (sortType === "sortLowToHigh") {
       const filterBySorting =
         filteredData.length === 0
           ? mensDataSpread.sort((a, b) => a.price - b.price)
@@ -134,22 +134,19 @@ export default function MensPage() {
       console.log("L", mensData);
       setFilteredData(filterBySorting);
     } else {
-      
       const filterBySorting =
         filteredData.length === 0
           ? mensDataSpread.sort((a, b) => b.price - a.price)
           : filteredDataSpread.sort((a, b) => b.price - a.price);
 
-          console.log("H", mensData);
+      console.log("H", mensData);
       setFilteredData([...filterBySorting]);
     }
   };
 
   const handleClear = (event) => {
     window.location.reload();
-  }
-
-
+  };
 
   return (
     <>
@@ -174,7 +171,13 @@ export default function MensPage() {
                 />
               </div>
               <div class="col-md-6">
-                <h5 class="m-3" onClick={handleClear} style={{cursor: "pointer"}}>Clear</h5>
+                <h5
+                  class="m-3"
+                  onClick={handleClear}
+                  style={{ cursor: "pointer" }}
+                >
+                  Clear
+                </h5>
               </div>
 
               <div class="col-md-3">
@@ -306,12 +309,14 @@ export default function MensPage() {
                 ? filteredData.map((product, index) => (
                     <div key={index} className="col-md-4 mb-4">
                       <div className="card" style={{ width: "18rem" }}>
-                        <img
-                          src={product.image}
-                          className="card-img-top"
-                          alt="..."
-                          height="350rem"
-                        />
+                        <Link to={`/product/{product._id}`}>
+                          <img
+                            src={product.image}
+                            className="card-img-top"
+                            alt="..."
+                            height="350rem"
+                          />
+                        </Link>
                         <div className="card-body">
                           <h5 className="card-title">{product.name}</h5>
                           <p className="card-text">{product.description}</p>
@@ -364,12 +369,14 @@ export default function MensPage() {
                 : mensData.map((product, index) => (
                     <div key={index} className="col-md-4 mb-4">
                       <div className="card" style={{ width: "18rem" }}>
-                        <img
-                          src={product.image}
-                          className="card-img-top"
-                          alt="..."
-                          height="350rem"
-                        />
+                        <Link to={`/product/${product._id}`}>
+                          <img
+                            src={product.image}
+                            className="card-img-top"
+                            alt="..."
+                            height="350rem"
+                          />
+                        </Link>
                         <div className="card-body">
                           <h5 className="card-title">{product.name}</h5>
                           <p className="card-text">{product.description}</p>
