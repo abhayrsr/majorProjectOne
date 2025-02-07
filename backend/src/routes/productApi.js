@@ -15,6 +15,7 @@ productRouter.get("/:id", async(req, res) => {
     try{
         const id = req.params.id
         const product = await readAllProducts(id)
+        console.log(product)
 
         if(product){
             res.status(200).json(product);
@@ -26,4 +27,4 @@ productRouter.get("/:id", async(req, res) => {
     }
 })
 
-module.exports = productRouter;
+module.exports = {productRouter};

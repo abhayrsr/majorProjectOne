@@ -15,6 +15,7 @@ async function seedingData(){
             const newClothes = new MensClothes({
                 name: clothes.name,
                 description: clothes.description,
+                details: clothes.details,
                 image: clothes.image,
                 price: clothes.price,
                 category: clothes.category,

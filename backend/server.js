@@ -3,7 +3,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const { initializeDatabase } = require("./src/config/db/db.connect");
 const { mensRouter } = require("./src/routes/mensApi");
-const productRouter = require("./src/routes/productApi");
+const {productRouter} = require("./src/routes/productApi");
 dotenv.config();
 
 const app = express();
@@ -22,9 +22,6 @@ async function main() {
 }
 
 main();
-
-// Routes
-
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
