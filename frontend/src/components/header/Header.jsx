@@ -1,8 +1,10 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
-import {useNavigate} from 'react-router-dom';
-import "./Header.css"
-export default function Header() {
+import { useNavigate } from "react-router-dom";
+import Badge from "@mui/material/Badge";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import LocalMallIcon from '@mui/icons-material/LocalMall';
+import "./Header.css";
+import { SvgIcon } from "@mui/material";
+export default function Header({ wishListCount, cartCount }) {
   const navigate = useNavigate();
   return (
     <>
@@ -25,7 +27,7 @@ export default function Header() {
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item mx-2">
-                <a class="nav-link"  href="/mens">
+                <a class="nav-link" href="/mens">
                   Men
                 </a>
               </li>
@@ -69,12 +71,23 @@ export default function Header() {
               </li>
               <li class="nav-item ms-4">
                 <div class="mt-1 custom-heart">
-                  <FontAwesomeIcon icon={faHeart} />
+                  <Badge badgeContent={4} color="primary">
+                    {/* <FontAwesomeIcon icon={faHeart} /> */}
+                    <SvgIcon>
+                      <LocalMallIcon />
+                    </SvgIcon>
+                  </Badge>
                 </div>
               </li>
               <li class="nav-item ms-4">
                 <div class="mt-1 custom-cart">
-                  <FontAwesomeIcon icon={faCartShopping} />
+                  <Badge badgeContent={4} color="primary">
+                    {/* <FontAwesomeIcon icon={faCartShopping} /> */}
+                    <SvgIcon>
+                      <ShoppingCartIcon />
+                    </SvgIcon>
+                    {/* <ShoppingCartIcon fontSize="large" ></ShoppingCartIcon> */}
+                  </Badge>
                 </div>
               </li>
             </ul>

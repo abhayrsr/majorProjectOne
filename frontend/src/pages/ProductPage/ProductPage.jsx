@@ -17,8 +17,9 @@ export default function ProductPage() {
   const [recommendedProduct, setRecommendedProducts] = useState([]);
   const [buttonState, setButtonState] = useState(0);
   const [wishlistState, setWishlistState] = useState([]);
+  const [wishListItems, setWishListItems] = useState([]);
 
-  console.log(size.length);
+  // console.log(size.length);
 
   const responsive = {
     superLargeDesktop: {
@@ -50,7 +51,7 @@ export default function ProductPage() {
           throw new Error("Failed to fetch");
         }
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         setProduct(data);
       } catch (error) {
         console.log("Error fetching the data");
@@ -67,12 +68,12 @@ export default function ProductPage() {
       try {
         setLoading(true);
         const response = await fetch(`http://localhost:5000/mens`);
-        console.log("response", response);
+        // console.log("response", response);
         if (!response.ok) {
           throw new Error("Failed to fetch");
         }
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         setRecommendedProducts(data);
       } catch (error) {
         console.log("Error fetching the data");
@@ -82,6 +83,26 @@ export default function ProductPage() {
     };
     fetchRecommendedProduct();
   }, []);
+
+  const handleWishList = async (wishListItem) => {
+    setWishListItems((prev) => [...prev, wishListItem]);
+    // fetch(`http://localhost:5000/`, {
+    //   method: "POST",
+    //   body: JSON.stringify(data),
+    //   headers: {
+    //     "Content-Type": "application/json; charset=UTF-8",
+    //   },
+    // })
+    //   .then((data) => console.log(data))
+    //   .catch((error) =>
+    //     console.log("error occurred while posting the data", error)
+    //   );
+  };
+
+  useEffect(() => {
+    setButtonState(Array(product.length).fill(false));
+    setWishlistState(Array(product.length).fill(false));
+  }, [product]);
 
   const buttonClick = (index) => {
     setButtonState((prevState) => {
@@ -274,11 +295,16 @@ export default function ProductPage() {
                   </div>
                   <div onClick={() => btnWishlistClick(index)}>
                     {!wishlistState[index] ? (
-                      <a href="#" className="btn btn-secondary m-2" key={index}>
+                      <a
+                        href=""
+                        className="btn btn-secondary m-2"
+                        key={index}
+                        onClick={handleWishList(item)}
+                      >
                         Save to wishlist
                       </a>
                     ) : (
-                      <a href="#" className="btn btn-secondary m-2" key={index}>
+                      <a href="" className="btn btn-secondary m-2" key={index}>
                         Saved to wishlist
                       </a>
                     )}
