@@ -5,22 +5,23 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import "./ProductPage.css";
 
 export default function ProductPage() {
   const { id } = useParams();
   const [product, setProduct] = useState({});
+  const [size, setSize] = useState("");
+  const [checkSize, setCheckSize] = useState(false);
   const [loading, setLoading] = useState(false);
   const [quantity, setQuantity] = useState(0);
   const [recommendedProduct, setRecommendedProducts] = useState([]);
   const [buttonState, setButtonState] = useState(0);
   const [wishlistState, setWishlistState] = useState([]);
 
-  console.log(product);
-  console.log(id);
+  console.log(size.length);
 
   const responsive = {
     superLargeDesktop: {
-      // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
       items: 5,
     },
@@ -94,6 +95,25 @@ export default function ProductPage() {
     });
   };
 
+  const handlePlus = (e) => {
+    let count = quantity;
+    count++;
+    setQuantity(count);
+  };
+
+  const handleMinus = (e) => {
+    let count = quantity;
+    count--;
+    count < 0 ? setQuantity(0) : setQuantity(count);
+  };
+
+  const handleSize = (e) => {
+    let sizeOfProduct = e.target.value;
+    let flag = checkSize;
+    setCheckSize(!flag);
+    setSize(sizeOfProduct);
+  };
+
   return (
     <>
       <Header />
@@ -120,20 +140,93 @@ export default function ProductPage() {
             <p class="fs-3">${product?.price}</p>
             <p>
               <span class="fw-medium">Quantity</span>
-              <button class="mx-2 btn btn-light rounded-circle btn-sm">
+              <button
+                class="mx-2 btn btn-light rounded-circle btn-sm"
+                onClick={handleMinus}
+              >
                 {" "}
                 -{" "}
               </button>
-              <input class="me-2" value={quantity} id="quantit" size="1" />
-              <button class="btn btn-light rounded-circle btn-sm"> + </button>
+              <input class="me-2" value={quantity} id="quantity" size="1" />
+              <button
+                class="btn btn-light rounded-circle btn-sm"
+                onClick={handlePlus}
+              >
+                {" "}
+                +{" "}
+              </button>
             </p>
             <p>
               <span class="fw-medium">Size</span>
-              <button class="btn btn-outline-secondary mx-2 btn-sm">S</button>
-              <button class="btn btn-outline-secondary me-2 btn-sm">M</button>
-              <button class="btn btn-outline-secondary me-2 btn-sm">L</button>
-              <button class="btn btn-outline-secondary me-2 btn-sm">XL</button>
-              <button class="btn btn-outline-secondary me-2 btn-sm">XXL</button>
+              {/* <button
+                id="S"
+                class={`btn btn-outline-secondary mx-2 btn-sm ${
+                  size.length !== 0 && checkSize ? "btn-selected" : ""
+                }`}
+                name="sizeOfProducts"
+                value="S"
+                onClick={handleSize}
+              >
+                S
+              </button>
+              <button
+                id="M"
+                class={`btn btn-outline-secondary mx-2 btn-sm ${
+                  size.length !== 0 && checkSize ? "btn-selected" : ""
+                }`}
+                name="sizeOfProducts"
+                value="M"
+                onClick={handleSize}
+              >
+                M
+              </button>
+              <button
+                id="L"
+                class={`btn btn-outline-secondary mx-2 btn-sm ${
+                  size.length !== 0 && checkSize ? "btn-selected" : ""
+                }`}
+                name="sizeOfProducts"
+                value="L"
+                onClick={handleSize}
+              >
+                L
+              </button>
+              <button
+                id="XL"
+                class={`btn btn-outline-secondary mx-2 btn-sm ${
+                  size.length !== 0 && checkSize ? "btn-selected" : ""
+                }`}
+                name="sizeOfProducts"
+                value="XL"
+                onClick={handleSize}
+              >
+                XL
+              </button>
+              <button
+                id="XXL"
+                class={`btn btn-outline-secondary mx-2 btn-sm ${
+                  size.length !== 0 && checkSize ? "btn-selected" : ""
+                }`}
+                name="sizeOfProducts"
+                value="XXL"
+                onClick={handleSize}
+              >
+                XXL
+              </button> */}
+              {["S", "M", "L", "XL", "XXL"].map((item, i) => (
+                <button
+                  key={i}
+                  id={item}
+                  className={`btn btn-outline-secondary mx-2 btn-sm ${
+                    size === item ? `${item}-btn-selected` : ""
+                  }`}
+                  name="sizeOfProducts"
+                  value={item}
+                  onClick={handleSize}
+                >
+                  {item}
+                </button>
+              ))}
             </p>
             <hr />
             <p>
@@ -148,7 +241,10 @@ export default function ProductPage() {
           </div>
           <hr />
           <h5 class="text-start mb-3">More items you may like in apparel</h5>
-          <Carousel responsive={responsive} itemClass="carousel-item-padding-40px">
+          <Carousel
+            responsive={responsive}
+            itemClass="carousel-item-padding-40px"
+          >
             {recommendedProduct.map((item, index) => (
               <div className="card" style={{ width: "18rem" }}>
                 <Link to={`/product/{item._id}`}>
