@@ -4,7 +4,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import "./Header.css";
 import { SvgIcon } from "@mui/material";
-export default function Header({ wishListCount, cartCount }) {
+export default function Header() {
   const navigate = useNavigate();
   return (
     <>

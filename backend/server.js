@@ -4,14 +4,18 @@ const dotenv = require("dotenv");
 const { initializeDatabase } = require("./src/config/db/db.connect");
 const { mensRouter } = require("./src/routes/mensApi");
 const {productRouter} = require("./src/routes/productApi");
+const { wishListRouter } = require("./src/routes/wishListApi");
+const { removeWishListRouter } = require("./src/routes/removeWishListAPI");
 dotenv.config();
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use("/mens", mensRouter)
-app.use("/product", productRouter)
+app.use("/mens", mensRouter);
+app.use("/product", productRouter);
+app.use("/wishlist", wishListRouter);
+app.use("/wishlist", removeWishListRouter);
 
 async function main() {
   try {

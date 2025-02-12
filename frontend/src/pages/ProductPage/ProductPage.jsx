@@ -82,26 +82,58 @@ export default function ProductPage() {
       }
     };
     fetchRecommendedProduct();
-  }, []);
+  }, [id]);
 
-  const handleWishList = async (wishListItem) => {
-    setWishListItems((prev) => [...prev, wishListItem]);
-    // fetch(`http://localhost:5000/`, {
-    //   method: "POST",
-    //   body: JSON.stringify(data),
-    //   headers: {
-    //     "Content-Type": "application/json; charset=UTF-8",
-    //   },
-    // })
-    //   .then((data) => console.log(data))
-    //   .catch((error) =>
-    //     console.log("error occurred while posting the data", error)
-    //   );
+  const handleWishList = async (event, itemsInWishList) => {
+    event.preventDefault()
+    // console.log(itemsInWishList);
+    setWishListItems((prev) => [...prev, itemsInWishList]);
+    const data = {
+      name: itemsInWishList.name,
+      price: itemsInWishList.price,
+    }
+    console.log(data)
+    fetch(`http://localhost:5000/wishlist`, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((data) => console.log(data))
+      .catch((error) =>
+        console.log("error occurred while posting the data", error)
+      );
   };
 
+  const handleRemoveWishList = async (event, itemsInWishList) => {
+    event.preventDefault();
+    // console.log(itemsInWishList)
+    const id = itemsInWishList._id
+    console.log(id)
+    fetch(`http://lcoalhost:5000/wishlist/${id}`, {
+      method: 'DELETE',
+      // headers: {
+      //   "Content-Type": "application/json"
+      // }
+    })
+    .then(async response => {
+      const data = await response.json();
+      console.log("data", data);
+
+      if (!response.ok) {
+          // get error message from body or default to response status
+          const error = (data && data.message) || response.status;
+          return Promise.reject(error);
+      }
+      })
+    .catch((error) => console.log("error occurred while deleting the data", error));
+  }
+
   useEffect(() => {
-    setButtonState(Array(product.length).fill(false));
-    setWishlistState(Array(product.length).fill(false));
+    let productLength = product.length
+    setButtonState(Array(productLength).fill(false));
+    setWishlistState(Array(productLength).fill(false));
   }, [product]);
 
   const buttonClick = (index) => {
@@ -299,12 +331,12 @@ export default function ProductPage() {
                         href=""
                         className="btn btn-secondary m-2"
                         key={index}
-                        onClick={handleWishList(item)}
+                        onClick={(event) => handleWishList(event, item)}
                       >
                         Save to wishlist
                       </a>
                     ) : (
-                      <a href="" className="btn btn-secondary m-2" key={index}>
+                      <a href="" className="btn btn-secondary m-2" key={index} onClick={(event) => handleRemoveWishList(event, item)}>
                         Saved to wishlist
                       </a>
                     )}
