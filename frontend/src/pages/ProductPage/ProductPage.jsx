@@ -111,7 +111,7 @@ export default function ProductPage() {
     // console.log(itemsInWishList)
     const id = itemsInWishList._id
     console.log(id)
-    fetch(`http://lcoalhost:5000/wishlist/${id}`, {
+    fetch(`http://localhost:5000/wishlist/${id}`, {
       method: 'DELETE',
       // headers: {
       //   "Content-Type": "application/json"
