@@ -6,6 +6,7 @@ const { mensRouter } = require("./src/routes/mensApi");
 const {productRouter} = require("./src/routes/productApi");
 const { wishListRouter } = require("./src/routes/wishListApi");
 const { removeWishListRouter } = require("./src/routes/removeWishListAPI");
+const { getWishListRouter } = require("./src/routes/getWishlistApi");
 dotenv.config();
 
 const app = express();
@@ -16,6 +17,7 @@ app.use("/mens", mensRouter);
 app.use("/product", productRouter);
 app.use("/wishlist", wishListRouter);
 app.use("/wishlist", removeWishListRouter);
+app.use("/wishlist", getWishListRouter);
 
 async function main() {
   try {

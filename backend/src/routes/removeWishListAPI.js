@@ -4,12 +4,11 @@ const removeWishListRouter = express.Router();
 
 removeWishListRouter.delete("/:id", async (req, res) => {
     try{
-        const id = req.params.id;
-        console.log(id)
-        const deleteProduct = await wishlistClothes.deleteMany({ _id: id });
-        console.log(deleteProduct)
-        if(deleteProduct){
-            res.status(200).json(deleteProduct);
+        const id = req.params.id; 
+        const deletedProduct = await wishlistClothes.findByIdAndDelete(id).exec();
+        console.log("Deleted Product:", deletedProduct);
+        if(deletedProduct){
+            res.status(200).json({ message: "Product deleted successfully", deletedProduct });
         } else {
             res.status(404).json({error: "No product fetched"});
         }

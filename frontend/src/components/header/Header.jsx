@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import Badge from "@mui/material/Badge";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import LocalMallIcon from '@mui/icons-material/LocalMall';
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import LocalMallIcon from "@mui/icons-material/LocalMall";
 import "./Header.css";
 import { SvgIcon } from "@mui/material";
-export default function Header() {
+import { Link } from "react-router-dom";
+export default function Header({wishlistData}) {
   const navigate = useNavigate();
+  console.log("len of wishlist", wishlistData)
   return (
     <>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -71,12 +73,13 @@ export default function Header() {
               </li>
               <li class="nav-item ms-4">
                 <div class="mt-1 custom-heart">
-                  <Badge badgeContent={4} color="primary">
-                    {/* <FontAwesomeIcon icon={faHeart} /> */}
-                    <SvgIcon>
-                      <LocalMallIcon />
-                    </SvgIcon>
-                  </Badge>
+                  <Link to="/wishlist">
+                    <Badge badgeContent={wishlistData} color="primary">
+                      <SvgIcon>
+                        <LocalMallIcon />
+                      </SvgIcon>
+                    </Badge>
+                  </Link>
                 </div>
               </li>
               <li class="nav-item ms-4">

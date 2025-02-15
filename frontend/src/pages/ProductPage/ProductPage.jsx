@@ -89,7 +89,9 @@ export default function ProductPage() {
     // console.log(itemsInWishList);
     setWishListItems((prev) => [...prev, itemsInWishList]);
     const data = {
+      id: itemsInWishList._id,
       name: itemsInWishList.name,
+      image: itemsInWishList.image,
       price: itemsInWishList.price,
     }
     console.log(data)
@@ -131,10 +133,11 @@ export default function ProductPage() {
   }
 
   useEffect(() => {
-    let productLength = product.length
+    let productLength = recommendedProduct.length
     setButtonState(Array(productLength).fill(false));
     setWishlistState(Array(productLength).fill(false));
-  }, [product]);
+    console.log("wishlistState1", wishlistState)
+  }, [recommendedProduct]);
 
   const buttonClick = (index) => {
     setButtonState((prevState) => {
@@ -146,6 +149,7 @@ export default function ProductPage() {
     setWishlistState((prevState) => {
       return prevState.map((button, i) => (i === index ? !button : button));
     });
+    console.log("wishlistItems",wishlistState)
   };
 
   const handlePlus = (e) => {
@@ -169,7 +173,7 @@ export default function ProductPage() {
 
   return (
     <>
-      <Header />
+      <Header wishlistData={wishListItems.length}/>
       <div class="container">
         <div class="row">
           <div class="col-md-3 mb-5">
