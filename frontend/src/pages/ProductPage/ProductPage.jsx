@@ -85,7 +85,7 @@ export default function ProductPage() {
   }, [id]);
 
   const handleWishList = async (event, itemsInWishList) => {
-    event.preventDefault()
+    // event.preventDefault()
     // console.log(itemsInWishList);
     setWishListItems((prev) => [...prev, itemsInWishList]);
     const data = {
@@ -109,7 +109,7 @@ export default function ProductPage() {
   };
 
   const handleRemoveWishList = async (event, itemsInWishList) => {
-    event.preventDefault();
+    // event.preventDefault();
     // console.log(itemsInWishList)
     const id = itemsInWishList._id
     console.log(id)
@@ -180,7 +180,7 @@ export default function ProductPage() {
             <div class="card mt-3" style={{ width: "18rem" }}>
               <img
                 src={product?.image}
-                className="card-img-top mt-3"
+                className="card-img-top"
                 alt="..."
                 height="280rem"
               />
@@ -215,61 +215,6 @@ export default function ProductPage() {
             </p>
             <p>
               <span class="fw-medium">Size</span>
-              {/* <button
-                id="S"
-                class={`btn btn-outline-secondary mx-2 btn-sm ${
-                  size.length !== 0 && checkSize ? "btn-selected" : ""
-                }`}
-                name="sizeOfProducts"
-                value="S"
-                onClick={handleSize}
-              >
-                S
-              </button>
-              <button
-                id="M"
-                class={`btn btn-outline-secondary mx-2 btn-sm ${
-                  size.length !== 0 && checkSize ? "btn-selected" : ""
-                }`}
-                name="sizeOfProducts"
-                value="M"
-                onClick={handleSize}
-              >
-                M
-              </button>
-              <button
-                id="L"
-                class={`btn btn-outline-secondary mx-2 btn-sm ${
-                  size.length !== 0 && checkSize ? "btn-selected" : ""
-                }`}
-                name="sizeOfProducts"
-                value="L"
-                onClick={handleSize}
-              >
-                L
-              </button>
-              <button
-                id="XL"
-                class={`btn btn-outline-secondary mx-2 btn-sm ${
-                  size.length !== 0 && checkSize ? "btn-selected" : ""
-                }`}
-                name="sizeOfProducts"
-                value="XL"
-                onClick={handleSize}
-              >
-                XL
-              </button>
-              <button
-                id="XXL"
-                class={`btn btn-outline-secondary mx-2 btn-sm ${
-                  size.length !== 0 && checkSize ? "btn-selected" : ""
-                }`}
-                name="sizeOfProducts"
-                value="XXL"
-                onClick={handleSize}
-              >
-                XXL
-              </button> */}
               {["S", "M", "L", "XL", "XXL"].map((item, i) => (
                 <button
                   key={i}

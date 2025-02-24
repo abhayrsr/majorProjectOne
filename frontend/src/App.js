@@ -4,6 +4,7 @@ import MensPage from './pages/MensPage/MensPage';
 import './App.css';
 import ProductPage from './pages/ProductPage/ProductPage';
 import WishListPage from './pages/WishlistPage/WishList';
+import AddToCartPage from './pages/AddToCartPage/AddToCart';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/mens" element = {<MensPage />} />
           <Route path="/product/:id" element= {<ProductPage />} />
           <Route path="/wishlist" element= {<WishListPage />} />
+          <Route path="/addtocart" element= {<AddToCartPage />} />
         </Routes>
     </div>
     </Router>

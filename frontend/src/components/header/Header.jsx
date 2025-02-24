@@ -5,9 +5,30 @@ import LocalMallIcon from "@mui/icons-material/LocalMall";
 import "./Header.css";
 import { SvgIcon } from "@mui/material";
 import { Link } from "react-router-dom";
-export default function Header({wishlistData}) {
-  const navigate = useNavigate();
-  console.log("len of wishlist", wishlistData)
+import { useState, useEffect } from "react";
+export default function Header({ wishlistBadge }) {
+  const [wishlistData, setWishlistData] = useState([]);
+  const [loading, setIsLoading] = useState(false);
+  useEffect(() => {
+    const fetchWishlistProducts = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch("http://localhost:5000/wishlist/list");
+        if (!response.ok) {
+          throw new Error("Failed to fetch");
+        }
+        const data = await response.json();
+        console.log("wishlist page:", data);
+        setWishlistData(data);
+      } catch (error) {
+        console.log("Error fetching the data");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchWishlistProducts();
+  }, []);
   return (
     <>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -74,7 +95,7 @@ export default function Header({wishlistData}) {
               <li class="nav-item ms-4">
                 <div class="mt-1 custom-heart">
                   <Link to="/wishlist">
-                    <Badge badgeContent={wishlistData} color="primary">
+                    <Badge badgeContent={wishlistData.length} color="primary">
                       <SvgIcon>
                         <LocalMallIcon />
                       </SvgIcon>
@@ -86,9 +107,11 @@ export default function Header({wishlistData}) {
                 <div class="mt-1 custom-cart">
                   <Badge badgeContent={4} color="primary">
                     {/* <FontAwesomeIcon icon={faCartShopping} /> */}
-                    <SvgIcon>
-                      <ShoppingCartIcon />
-                    </SvgIcon>
+                    <Link to="/addtocart">
+                      <SvgIcon>
+                        <ShoppingCartIcon />
+                      </SvgIcon>
+                    </Link>
                     {/* <ShoppingCartIcon fontSize="large" ></ShoppingCartIcon> */}
                   </Badge>
                 </div>

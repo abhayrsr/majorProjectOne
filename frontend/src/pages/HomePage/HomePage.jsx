@@ -1,7 +1,11 @@
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import { useState, useEffect } from "react";
+import WishListPage from "../WishlistPage/WishList";
 
 export default function HomePage() {
+   
+  
   return (
     <>
       <Header />

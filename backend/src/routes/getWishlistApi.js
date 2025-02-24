@@ -15,7 +15,7 @@ getWishListRouter.get("/list", async (req, res) => {
   try {
     const wishlistClothes = await readAllClothes();
     if (wishlistClothes.length !== 0) {
-      res.json(wishlistClothes);
+      res.status(200).json(wishlistClothes);
     } else {
       res.status(404).json({ error: "No clothes found in wishlist" });
     }
